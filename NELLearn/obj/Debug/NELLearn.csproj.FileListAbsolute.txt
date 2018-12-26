@@ -1,0 +1,7 @@
+D:\Git\NELLearn\NELLearn\bin\Debug\NELLearn.exe.config
+D:\Git\NELLearn\NELLearn\bin\Debug\NELLearn.exe
+D:\Git\NELLearn\NELLearn\bin\Debug\NELLearn.pdb
+D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csprojAssemblyReference.cache
+D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csproj.CoreCompileInputs.cache
+D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.exe
+D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.pdb
