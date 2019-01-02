@@ -1,7 +1,16 @@
 D:\Git\NELLearn\NELLearn\bin\Debug\NELLearn.exe.config
 D:\Git\NELLearn\NELLearn\bin\Debug\NELLearn.exe
 D:\Git\NELLearn\NELLearn\bin\Debug\NELLearn.pdb
-D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csprojAssemblyReference.cache
+D:\Git\NELLearn\NELLearn\bin\Debug\System.Security.Cryptography.Algorithms.dll
+D:\Git\NELLearn\NELLearn\bin\Debug\System.dll
+D:\Git\NELLearn\NELLearn\bin\Debug\thinSDK.dll
+D:\Git\NELLearn\NELLearn\bin\Debug\thinSDK_neo.dll
 D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csproj.CoreCompileInputs.cache
+D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csproj.CopyComplete
 D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.exe
 D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.pdb
+D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csprojAssemblyReference.cache
+D:\Git\NELLearn\NELLearn\bin\Debug\llvm.dll
+D:\Git\NELLearn\NELLearn\bin\Debug\thinSDK.pdb
+D:\Git\NELLearn\NELLearn\bin\Debug\thinSDK_neo.pdb
+D:\Git\NELLearn\NELLearn\bin\Debug\llvm.pdb
