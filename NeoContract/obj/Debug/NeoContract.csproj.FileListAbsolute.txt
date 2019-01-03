@@ -5,4 +5,3 @@ D:\Git\NELLearn\NeoContract\obj\Debug\NeoContract.csproj.CoreCompileInputs.cache
 D:\Git\NELLearn\NeoContract\obj\Debug\NeoContract.csproj.CopyComplete
 D:\Git\NELLearn\NeoContract\obj\Debug\NeoContract.dll
 D:\Git\NELLearn\NeoContract\obj\Debug\NeoContract.pdb
-D:\Git\NELLearn\NeoContract\obj\Debug\NeoContract.csprojAssemblyReference.cache

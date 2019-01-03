@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace NELLearn
 {
+    /// <summary>
+    /// 发布合约
+    /// </summary>
     class pubSmartContract
     {
-       public static void test(DataMgr mgr)
+        public static string tokenScript = "0x7be3ec92a023a531295b54112d859e5304d7cf8b";
+        public static string wif1 = "KwUhZzS6wrdsF4DjVKt2XQd3QJoidDhckzHfZJdQ3gzUUJSr8MDd";//地址 AcjVGYytBysSdQTLZXpLarvVVYYNUiiUgG
+        public static string id_GAS = "0x602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7";
+
+        public static void test(DataMgr mgr)
         {
             string id_GAS = "0x602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7";
 
-            string wif = "KxVBMDQ1Qmqmh6v6MtdMGa2wedkhkGFDRDd21wcEztcvEiaFqKzv";
+            string wif = pubSmartContract.wif1;
             byte[] prikey = ThinNeo.Helper.GetPrivateKeyFromWIF(wif);
             byte[] pubkey = ThinNeo.Helper.GetPublicKeyFromPrivateKey(prikey);
             string address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
@@ -30,7 +37,7 @@ namespace NELLearn
             int need_canCharge = 4;
             string name = "test";
             string version = "1.0";
-            string auther = "tpp";
+            string auther = "tpo";
             string email = "0";
             string description = "0";
             using (ThinNeo.ScriptBuilder sb = new ThinNeo.ScriptBuilder())
@@ -54,7 +61,7 @@ namespace NELLearn
 
                 var result = mgr.loader.rpc_invokescript(mgr.rpcUrl, scriptPublish);
 
-                //*******************************这里返回说 state:fault             ********************************************************************
+                //*******************************这里返回说   state:fault             ********************************************************************
 
                 MyJson.JsonNode_Object res= MyJson.Parse(result) as MyJson.JsonNode_Object;
                 Console.WriteLine(res.ToString());
@@ -90,6 +97,9 @@ namespace NELLearn
                 MyJson.JsonNode_Object resJO = (MyJson.JsonNode_Object)MyJson.Parse(resss);
                 Console.WriteLine(resJO.ToString());
             }
+
+
+
         }
     }
 }

@@ -87,10 +87,10 @@ namespace NELLearn
             }
         }
 
-        public async Task<MyJson.JsonNode_Object> downLoadString_newclient(string url)
+        public MyJson.JsonNode_Object downLoadString_newclient(string url)
         {
             var wc = new WebClient();
-            var str = await wc.DownloadStringTaskAsync(url);
+            var str = wc.DownloadString(url);
             var json = MyJson.Parse(str).AsDict();
             bool beError = json.ContainsKey("error");
             if (beError)
@@ -205,10 +205,18 @@ namespace NELLearn
 
         public  string rpc_getstorage(string url,string scriptaddress, string key)
         {
+            var urldata = this.makeRpcUrlGet(url,NeoMethod.rpc_getstorage, scriptaddress, key);
+            //var data = await this.downLoadString_newclient(urldata);
+            var res = this.downLoadString_newclient(urldata);
+            return res.ToString();
+        }
+
+        public string rpc_getstorage_2(string url, string scriptaddress, string key)
+        {
             var urldata = this.MakeRpcUrlPost(NeoMethod.rpc_getstorage, scriptaddress, key);
             //var data = await this.downLoadString_newclient(urldata);
             var res = this.httpPostData(url, urldata);
-            return res;
+            return res.ToString();
         }
 
         public string rpc_invokescript(string url,string script)

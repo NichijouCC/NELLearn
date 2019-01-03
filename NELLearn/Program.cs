@@ -38,6 +38,10 @@ namespace NELLearn
                         Console.WriteLine("$$$$$$$$$$$$$----------发布合约测试------------------");
                         pubSmartContract.test(mgr);
                         break;
+                    case "12":
+                        Console.WriteLine("$$$$$$$$$$$$$----------分币测试------------------");
+                        Deploy.test(mgr);
+                        break;
                     case "1":
                         Console.WriteLine("$$$$$$$$$$$$$----------查看资产测试------------------");
 
@@ -68,7 +72,7 @@ namespace NELLearn
                             Console.WriteLine("转账问题：" + e.Message);
                         }
                         break;
-                    case "s1":
+                    case "s11":
                         Console.WriteLine("$$$$$$$$$$$$$----------getStorage测试------------------");
                         try
                         {
@@ -77,6 +81,17 @@ namespace NELLearn
                         catch (Exception e)
                         {
                             Console.WriteLine("getStorage测试问题：" + e.Message);
+                        }
+                        break;
+                    case "s1":
+                        Console.WriteLine("$$$$$$$$$$$$$----------getStorage测试 111------------------");
+                        try
+                        {
+                            sanlian_1.Test(mgr);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("getStorage测试问题111：" + e.Message);
                         }
                         break;
                     case "s2":

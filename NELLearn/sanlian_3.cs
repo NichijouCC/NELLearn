@@ -7,22 +7,25 @@ using System.Threading.Tasks;
 namespace NELLearn
 {
     /// <summary>
-    /// nnc 转账
+    ///3/3 代币 转账
     /// </summary>
    public class sanlian_3
     {
         public static void test(DataMgr mgr)
         {
-            string nnc = "0x3fccdb91c9bb66ef2446010796feb6ca4ed96b05";
             string id_GAS = "0x602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7";
 
 
-            string wif1 = "KyHE9oSaBoEobQrYKtwEptK2VVVry3qYV27L24qdSawdvHRefxVw";
+            string tokenScript = "0x3fccdb91c9bb66ef2446010796feb6ca4ed96b05";
+            tokenScript = pubSmartContract.tokenScript;
+            string wif1 = pubSmartContract.wif1;//地址 AU5kNBWTYepzfS76DBwGKW3E3aRuFjhmAc
+
+
             byte[] prikey = ThinNeo.Helper.GetPrivateKeyFromWIF(wif1);
             byte[] pubkey = ThinNeo.Helper.GetPublicKeyFromPrivateKey(prikey);
             string address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
 
-            string toaddr = "APwCdakS1NpJsiq6j9SfvkQFS9ubt347a2";
+            string toaddr = "AU5kNBWTYepzfS76DBwGKW3E3aRuFjhmAc";
             string targeraddr = address;  //Transfer it to yourself. 
 
             //获取地址的资产列表
@@ -34,12 +37,12 @@ namespace NELLearn
 
             ThinNeo.ScriptBuilder sb = new ThinNeo.ScriptBuilder();
 
-            var scriptaddress = new ThinNeo.Hash160(nnc);
+            var scriptaddress = new ThinNeo.Hash160(tokenScript);
             //Parameter inversion 
             MyJson.JsonNode_Array JAParams = new MyJson.JsonNode_Array();
             JAParams.Add(new MyJson.JsonNode_ValueString("(address)" + address));
             JAParams.Add(new MyJson.JsonNode_ValueString("(address)" + toaddr));
-            JAParams.Add(new MyJson.JsonNode_ValueString("(integer)" + 1));
+            JAParams.Add(new MyJson.JsonNode_ValueString("(integer)" + 5));
             sb.EmitParamJson(JAParams);//Parameter list 
             sb.EmitPushString("transfer");//Method
             sb.EmitAppCall(scriptaddress);  //Asset contract 

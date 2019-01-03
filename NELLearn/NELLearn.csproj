@@ -59,12 +59,14 @@
     <Compile Include="DataIO.cs" />
     <Compile Include="DataMgr.cs" />
     <Compile Include="DataParaser.cs" />
+    <Compile Include="deploy.cs" />
     <Compile Include="helper\helper.cs" />
     <Compile Include="helper\MyJson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="pubSmartContract.cs" />
     <Compile Include="sanlian_1.cs" />
+    <Compile Include="sanlian_1_1.cs" />
     <Compile Include="sanlian_2.cs" />
     <Compile Include="sanlian_3.cs" />
     <Compile Include="transaction.cs" />

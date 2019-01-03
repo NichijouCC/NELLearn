@@ -52,15 +52,15 @@ namespace NeoContract
 
             if (method == "deploy")
             {
-                if (args.Length != 1) return false;
+                //if (args.Length != 1) return false;
                 if (!Runtime.CheckWitness(superAdmin)) return false;
-                byte[] total_supply = Storage.Get(Storage.CurrentContext, "totalSupply");
-                if (total_supply.Length != 0) return false;
-                var keySuperAdmin = new byte[] { 0x11 }.Concat(superAdmin);
-                Storage.Put(Storage.CurrentContext, keySuperAdmin, totalCoin);
+                //byte[] total_supply = Storage.Get(Storage.CurrentContext, "totalSupply");
+                //if (total_supply.Length != 0) return false;
+                //var keySuperAdmin = new byte[] { 0x11 }.Concat(superAdmin);
+                Storage.Put(Storage.CurrentContext, superAdmin, totalCoin);
                 Storage.Put(Storage.CurrentContext, "totalSupply", totalCoin);
             }
-            return true;
+            return false;
         }
         /// <summary>
         /// 币名
@@ -68,7 +68,7 @@ namespace NeoContract
         /// <returns></returns>
         public static string name()
         {
-            return "To Po Po";
+            return "SISTER";
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace NeoContract
         /// <returns></returns>
         public static string symbol()
         {
-            return "TPP";
+            return "SSR";
         }
         /// <summary>
         /// 小数点位数
@@ -85,12 +85,12 @@ namespace NeoContract
         /// <returns></returns>
         public static byte decimals()
         {
-            return 2;
+            return 1;
         }
-        private const ulong factor = 100;//精度2
-        private const ulong totalCoin = 10 * 100000000 * factor;//发行量10亿
+        private const ulong factor = 10;//精度2
+        private const ulong totalCoin = 10 * 10000 * factor;//发行量
 
-        static readonly byte[] superAdmin = Neo.SmartContract.Framework.Helper.ToScriptHash("AJi1N4tqLvjoYzQBRy8JAfuctvxxbnxoAP");//管理员
+        static readonly byte[] superAdmin = Neo.SmartContract.Framework.Helper.ToScriptHash("AcjVGYytBysSdQTLZXpLarvVVYYNUiiUgG");//管理员
         //发行总量
         public static BigInteger totalSupply()
         {

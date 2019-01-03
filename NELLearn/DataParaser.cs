@@ -36,7 +36,7 @@ namespace NELLearn
             //this.rpcUrl = rpcurl;
             //loader = new DataLoder(rpcurl);
             this.loader = _loder;
-            this.processedBlock = 230000;
+            this.processedBlock = 240000;
             //this.dataJson = _data;
         }
 
