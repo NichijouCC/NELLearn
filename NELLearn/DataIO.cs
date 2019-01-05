@@ -180,7 +180,26 @@ namespace NELLearn
                 Console.WriteLine("post transaction:" + e.Message);
                 return null;
             }
+        }
 
+        public string rpc_Transaction_3(string url, string rawdata)
+        {
+            string urldata = this.MakeRpcUrlPost(NeoMethod.rpc_sendrawtransaction, rawdata);
+            byte[] postdata = System.Text.Encoding.UTF8.GetBytes(urldata);
+
+            WebClient wc = new WebClient();
+            wc.Encoding = Encoding.UTF8;
+            wc.Headers.Add("content-type", "text/plain;charset=UTF-8");
+            try
+            {
+                byte[] retdata = wc.UploadDataTaskAsync(url, "POST", postdata).Result;
+                return System.Text.Encoding.UTF8.GetString(retdata);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("post transaction:" + e.Message);
+                return null;
+            }
         }
 
         public string rpc_Transaction_2(string url, string rawdata)

@@ -27,7 +27,7 @@ namespace NELLearn
             Dictionary<string, List<UtxoAsset>> assets = mgr.getAddressMoney(address);
 
             //从文件中读取合约脚本
-            byte[] script = System.IO.File.ReadAllBytes("D:\\Git\\NELLearn\\NeoContract\\bin\\Debug\\NeoContract.avm"); //这里填你的合约所在地址
+            byte[] script = System.IO.File.ReadAllBytes("..\\..\\..\\NeoContract\\bin\\Debug\\NeoContract.avm"); //这里填你的合约所在地址
             //Console.WriteLine("合约脚本:"+ThinNeo.Helper.Bytes2HexString(script));
             //Console.WriteLine("合约脚本hash："+ThinNeo.Helper.Bytes2HexString(ThinNeo.Helper.GetScriptHashFromScript(script).data.ToArray().Reverse().ToArray()));
             byte[] parameter__list = ThinNeo.Helper.HexString2Bytes("0710");  //这里填合约入参  例：0610代表（string，[]）
@@ -97,9 +97,6 @@ namespace NELLearn
                 MyJson.JsonNode_Object resJO = (MyJson.JsonNode_Object)MyJson.Parse(resss);
                 Console.WriteLine(resJO.ToString());
             }
-
-
-
         }
     }
 }
