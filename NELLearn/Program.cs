@@ -19,10 +19,10 @@ namespace NELLearn
             rpcurl = "http://localhost:40332";
             mgr = new DataMgr(rpcurl);
 
-            AsyncLoop();
+            AsyncLoop().Wait();
         }
 
-        async static void AsyncLoop()
+        async static Task AsyncLoop()
         {
             while (true)
             {
@@ -65,7 +65,7 @@ namespace NELLearn
                         Console.WriteLine("$$$$$$$$$$$$$----------转账测试------------------");
                         try
                         {
-                            Transaction.test(mgr);
+                           await Transaction.test(mgr);
                         }
                         catch (Exception e)
                         {
