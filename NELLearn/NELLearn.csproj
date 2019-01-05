@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="thinSDK, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dll\thinSDK.dll</HintPath>
+      <HintPath>dll\thinSDK.dll</HintPath>
     </Reference>
     <Reference Include="thinSDK_neo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\dll\thinSDK_neo.dll</HintPath>
+      <HintPath>dll\thinSDK_neo.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\thinSDK.dll" />
+    <Content Include="dll\thinSDK_neo.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
