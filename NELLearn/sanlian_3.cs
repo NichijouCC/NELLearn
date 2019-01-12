@@ -26,6 +26,8 @@ namespace NELLearn
             string address = ThinNeo.Helper.GetAddressFromPublicKey(pubkey);
 
             string toaddr = "AU5kNBWTYepzfS76DBwGKW3E3aRuFjhmAc";
+            toaddr = "AXdWU5vYe3Ja9n778RpgJrrCUjAsfQgT1r";
+            //string toaddr = "AXdWU5vYe3Ja9n778RpgJrrCUjAsfQgT1r";
             string targeraddr = address;  //Transfer it to yourself. 
 
             //获取地址的资产列表

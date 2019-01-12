@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="files\NeoNNCContract.avm" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dll\thinSDK.dll" />

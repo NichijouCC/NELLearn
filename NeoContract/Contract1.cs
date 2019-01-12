@@ -1,7 +1,10 @@
 ﻿using Neo.SmartContract.Framework;
 using Neo.SmartContract.Framework.Services.Neo;
+using Neo.SmartContract.Framework.Services.System;
 using System;
+using System.ComponentModel;
 using System.Numerics;
+using Helper = Neo.SmartContract.Framework.Helper;
 
 namespace NeoContract
 {
@@ -13,8 +16,22 @@ namespace NeoContract
         //    return true;
         //}
 
+        public delegate void deleTransfer(byte[] from, byte[] to, BigInteger value);
+        [DisplayName("transfer")]
+        public static event deleTransfer Transferred;
+
+        public class TransferInfo
+        {
+            public byte[] from;
+            public byte[] to;
+            public BigInteger value;
+        }
+
         public static object Main(string method, params object[] args)
         {
+            //必须在入口函数取得callscript，调用脚本的函数，也会导致执行栈变化，再取callscript就晚了
+            var callscript = ExecutionEngine.CallingScriptHash;
+
             //this is in nep5
             if (method == "totalSupply") return totalSupply();
             if (method == "name") return name();
@@ -42,8 +59,8 @@ namespace NeoContract
                 if (!Runtime.CheckWitness(from))
                     return false;
                 ////如果有跳板调用，不让转
-                //if (ExecutionEngine.EntryScriptHash.AsBigInteger() != callscript.AsBigInteger())
-                //    return false;
+                if (ExecutionEngine.EntryScriptHash.AsBigInteger() != callscript.AsBigInteger())
+                    return false;
                 //如果to是不可收钱合约,不让转
                 if (!IsPayable(to)) return false;
 
@@ -60,6 +77,13 @@ namespace NeoContract
                 Storage.Put(Storage.CurrentContext, superAdmin, totalCoin);
                 Storage.Put(Storage.CurrentContext, "totalSupply", totalCoin);
             }
+
+            if (method == "getTxInfo")
+            {
+                if (args.Length != 1) return 0;
+                byte[] txid = (byte[])args[0];
+                return getTxInfo(txid);
+            }
             return false;
         }
         /// <summary>
@@ -68,7 +92,7 @@ namespace NeoContract
         /// <returns></returns>
         public static string name()
         {
-            return "SISTER";
+            return "Sister_P";
         }
 
         /// <summary>
@@ -77,7 +101,7 @@ namespace NeoContract
         /// <returns></returns>
         public static string symbol()
         {
-            return "SSR";
+            return "SSRP";
         }
         /// <summary>
         /// 小数点位数
@@ -85,9 +109,9 @@ namespace NeoContract
         /// <returns></returns>
         public static byte decimals()
         {
-            return 1;
+            return 2;
         }
-        private const ulong factor = 10;//精度2
+        private const ulong factor = 100;//精度2
         private const ulong totalCoin = 10 * 10000 * factor;//发行量
 
         static readonly byte[] superAdmin = Neo.SmartContract.Framework.Helper.ToScriptHash("AcjVGYytBysSdQTLZXpLarvVVYYNUiiUgG");//管理员
@@ -134,7 +158,32 @@ namespace NeoContract
             BigInteger toNowValue = targetValue + amount;
             Storage.Put(Storage.CurrentContext,to,toNowValue);
 
+            //记录交易信息
+            setTxInfo(from, to, amount);
+            //notify
+            Transferred(from, to, amount);
+
             return true;
+        }
+
+        private static void setTxInfo(byte[] from, byte[] to, BigInteger value)
+        {
+            TransferInfo info = new TransferInfo();
+            info.from = from;
+            info.to = to;
+            info.value = value;
+            byte[] txinfo = Helper.Serialize(info);
+            var txid = (ExecutionEngine.ScriptContainer as Transaction).Hash;
+            var keytxid = new byte[] { 0x13 }.Concat(txid);
+            Storage.Put(Storage.CurrentContext, keytxid, txinfo);
+        }
+        public static TransferInfo getTxInfo(byte[] txid)
+        {
+            //byte[] keytxid = new byte[] { 0x13 }.Concat(txid);
+            byte[] v = Storage.Get(Storage.CurrentContext, txid);
+            if (v.Length == 0)
+                return null;
+            return Helper.Deserialize(v) as TransferInfo;
         }
         public static bool IsPayable(byte[] to)
         {

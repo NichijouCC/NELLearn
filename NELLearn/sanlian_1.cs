@@ -32,6 +32,10 @@ namespace NELLearn
 
             //string result = await Helper.HttpGet(url);
             Console.WriteLine("key:" + key + "json:"+result+"   得到的结果是：" + real);
+
+
+
+            
         }
     }
 }

@@ -8,3 +8,4 @@ D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csproj.CoreCompileInputs.cache
 D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csproj.CopyComplete
 D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.exe
 D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.pdb
+D:\Git\NELLearn\NELLearn\obj\Debug\NELLearn.csprojAssemblyReference.cache

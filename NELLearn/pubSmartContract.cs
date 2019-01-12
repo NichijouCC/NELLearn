@@ -11,7 +11,10 @@ namespace NELLearn
     /// </summary>
     class pubSmartContract
     {
-        public static string tokenScript = "0x7be3ec92a023a531295b54112d859e5304d7cf8b";
+        public static string tokenScript = "0x6112d5ec36d299a6a8c87ebde6f3782f7ac74118";
+        //public static string tokenScript = "0x3b37514f5292734dfeff976c6937e62342d35447";
+
+        
         public static string wif1 = "KwUhZzS6wrdsF4DjVKt2XQd3QJoidDhckzHfZJdQ3gzUUJSr8MDd";//地址 AcjVGYytBysSdQTLZXpLarvVVYYNUiiUgG
         public static string id_GAS = "0x602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7";
 
@@ -28,6 +31,8 @@ namespace NELLearn
 
             //从文件中读取合约脚本
             byte[] script = System.IO.File.ReadAllBytes("..\\..\\..\\NeoContract\\bin\\Debug\\NeoContract.avm"); //这里填你的合约所在地址
+            //byte[] script = System.IO.File.ReadAllBytes("D:\\Git\\NELLearn\\NELLearn\\files\\NeoNNCContract.avm"); //这里填你的合约所在地址
+
             //Console.WriteLine("合约脚本:"+ThinNeo.Helper.Bytes2HexString(script));
             //Console.WriteLine("合约脚本hash："+ThinNeo.Helper.Bytes2HexString(ThinNeo.Helper.GetScriptHashFromScript(script).data.ToArray().Reverse().ToArray()));
             byte[] parameter__list = ThinNeo.Helper.HexString2Bytes("0710");  //这里填合约入参  例：0610代表（string，[]）
